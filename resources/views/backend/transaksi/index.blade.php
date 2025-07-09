@@ -25,6 +25,7 @@
               <th class="text-white">Jumlah</th>
               <th class="text-white">Keterangan</th>
               <th class="text-white">Tanggal</th>
+              <th class="tetx-white">Aksi</th>
             </tr>
             <!-- end row -->
           </thead>
@@ -35,12 +36,14 @@
             @foreach($transaksi as $data)
             <tr>
               <td>{{ $no++ }}</td>
-              <td>{{ $data->users->name }}</td>
+              <td>{{ $data->user->name}}</td>
               <td>{{ $data->jenis}}</td>
               <td>{{ $data->jumlah}}</td>
+              <td>{{ $data->tanggal}}</td>
               <td>{{ $data->keterangan }}</td>
               <td>
                 <a href="{{ route('backend.transaksi.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{{ route('backend.transaksi.show', $data->id) }}" class="btn btn-info btn-sm">Show</a>
                 <a href="{{ route('backend.transaksi.destroy', $data->id) }}" class="btn btn-sm btn-danger" data-confirm-delete="true">Hapus</a>
               </td>
             </tr>

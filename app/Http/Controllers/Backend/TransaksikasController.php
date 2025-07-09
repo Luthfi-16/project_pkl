@@ -15,6 +15,10 @@ class TransaksikasController extends Controller
     {
         $transaksi = Transaksikas::all();
         $users     = User::where('isAdmin', '!=', 1)->get();
+        $title     = 'Hapus Data Akun!';
+        $text      = "Apakah Anda Yakin??";
+        confirmDelete($title, $text);
+
         return view('backend.transaksi.index', compact('transaksi', 'users'));
     }
 
@@ -34,23 +38,22 @@ class TransaksikasController extends Controller
     {
 
         $request->validate([
-            'user_id'     => 'required',
-            'jenis'    => 'required|in:pemasukkan,pengeluaran',
-            'jumlah' => 'required|numeric',
+            'user_id'    => 'required',
+            'jenis'      => 'required|in:pemasukkan,pengeluaran',
+            'jumlah'     => 'required|numeric',
             'keterangan' => 'nullable',
-            'tanggal' => 'required|date',
+            'tanggal'    => 'required|date',
         ]);
 
-        $transaksi = new Transaksikas();
-        $transaksi->user_id = $request->user_id;
-        $transaksi->jenis = $request->jenis;
-        $transaksi->jumlah = $request->jumlah;
+        $transaksi             = new Transaksikas();
+        $transaksi->user_id    = $request->user_id;
+        $transaksi->jenis      = $request->jenis;
+        $transaksi->jumlah     = $request->jumlah;
         $transaksi->keterangan = $request->keterangan;
-        $transaksi->tanggal = $request->tanggal;
-
-        toast('Data berhasil diedit', 'success');
-return redirect()->route('backend.siswa.index');
-
+        $transaksi->tanggal    = $request->tanggal;
+        $transaksi->save();
+        toast('Data berhasil ditambah', 'success');
+        return redirect()->route('backend.transaksi.index');
 
     }
 
@@ -59,7 +62,11 @@ return redirect()->route('backend.siswa.index');
      */
     public function show(string $id)
     {
-        //
+        $transaksi = Transaksikas::findOrFail($id);
+        $users     = User::all();
+
+        return view('backend.transaksi.show', compact('transaksi', 'users'));
+
     }
 
     /**
@@ -67,7 +74,10 @@ return redirect()->route('backend.siswa.index');
      */
     public function edit(string $id)
     {
-        //
+        $transaksi = Transaksikas::findOrFail($id);
+        $users     = User::all();
+
+        return view('backend.transaksi.edit', compact('transaksi', 'users'));
     }
 
     /**
@@ -75,7 +85,24 @@ return redirect()->route('backend.siswa.index');
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'user_id'    => 'required',
+            'jenis'      => 'required|in:pemasukkan,pengeluaran',
+            'jumlah'     => 'required|numeric',
+            'keterangan' => 'nullable',
+            'tanggal'    => 'required|date',
+        ]);
+
+        $transaksi             = Transaksikas::findOrFail($id);
+        $transaksi->user_id    = $request->user_id;
+        $transaksi->jenis      = $request->jenis;
+        $transaksi->jumlah     = $request->jumlah;
+        $transaksi->keterangan = $request->keterangan;
+        $transaksi->tanggal    = $request->tanggal;
+        $transaksi->save();
+        toast('Data berhasil diedit', 'success');
+        return redirect()->route('backend.transaksi.index');
+
     }
 
     /**
@@ -83,6 +110,10 @@ return redirect()->route('backend.siswa.index');
      */
     public function destroy(string $id)
     {
-        //
+        $transaksi = Transaksikas::findOrFail($id);
+        $transaksi->delete();
+        toast('Data berhasil dihapus', 'success');
+        return redirect()->route('backend.transaksi.index');
+
     }
 }

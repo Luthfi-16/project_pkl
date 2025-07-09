@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Transaksikas extends Model
+class Pembayaran extends Model
 {
-    public $fillable = ['user_id', 'jenis', 'jumlah', 'keterangan', 'tanggal'];
+    public $fillable = ['user_id', 'jumlah', 'tanggal'];
 
 
     public function user(){
