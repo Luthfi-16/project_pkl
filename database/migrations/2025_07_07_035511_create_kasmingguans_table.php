@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kas_mingguans', function (Blueprint $table) {
+        Schema::create('kasmingguans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->enum('status', ['lunas', 'belum'])->default('belum');

@@ -8,8 +8,11 @@ class Pembayaran extends Model
 {
     public $fillable = ['user_id', 'jumlah', 'tanggal'];
 
+    protected $casts = [
+        'tanggal' => 'datetime',
+    ];
 
-    public function user(){
+    public function users(){
         return $this->belongsTo(User::class, 'user_id');
     }
 }

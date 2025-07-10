@@ -16,6 +16,7 @@
   <title>Modernize Bootstrap Admin</title>
   <!-- Owl Carousel  -->
   <link rel="stylesheet" href="{{ asset('/assets/backend/libs/owl.carousel/dist/assets/owl.carousel.min.css')}}" />
+  @yield('styles')
 </head>
 
 <body>

@@ -8,8 +8,8 @@ class Transaksikas extends Model
 {
     public $fillable = ['user_id', 'jenis', 'jumlah', 'keterangan', 'tanggal'];
 
+    protected $casts = [
+        'tanggal' => 'datetime',
+    ];
 
-    public function user(){
-        return $this->belongsTo(User::class, 'user_id');
-    }
 }

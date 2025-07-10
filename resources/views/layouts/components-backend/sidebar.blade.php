@@ -37,7 +37,7 @@
           <span class="hide-menu">PAGES</span>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="{{ url('admin/siswa')}}" aria-expanded="false">
+          <a class="sidebar-link" href="{{ route('backend.siswa.index') }}" aria-expanded="false">
             <span>
               <i class="ti ti-user-circle"></i>
             </span>
@@ -45,7 +45,7 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="{{ url('admin/transaksi')}}" aria-expanded="false">
+          <a class="sidebar-link" href="{{ route('backend.transaksi.index') }}" aria-expanded="false">
             <span>
               <i class="ti ti-currency-dollar"></i>
             </span>
@@ -53,11 +53,19 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="" aria-expanded="false">
+          <a class="sidebar-link" href="{{ route('backend.pembayaran.index') }}" aria-expanded="false">
             <span>
-              <i class="ti ti-shopping-cart"></i>
+              <i class="ti ti-app-window"></i>
             </span>
-            <span class="hide-menu">Orders</span>
+            <span class="hide-menu">Table Pembayaran</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{ route('backend.kas.index') }}" aria-expanded="false">
+            <span>
+              <i class="ti ti-cards"></i>
+            </span>
+            <span class="hide-menu">Table Kas Mingguan</span>
           </a>
         </li>
       </ul>

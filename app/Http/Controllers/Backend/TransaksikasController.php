@@ -3,7 +3,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Transaksikas;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class TransaksikasController extends Controller
@@ -14,12 +13,11 @@ class TransaksikasController extends Controller
     public function index()
     {
         $transaksi = Transaksikas::all();
-        $users     = User::where('isAdmin', '!=', 1)->get();
-        $title     = 'Hapus Data Akun!';
+        $title     = 'Hapus Data Transaksi!';
         $text      = "Apakah Anda Yakin??";
         confirmDelete($title, $text);
 
-        return view('backend.transaksi.index', compact('transaksi', 'users'));
+        return view('backend.transaksi.index', compact('transaksi'));
     }
 
     /**
@@ -27,8 +25,7 @@ class TransaksikasController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        return view('backend.transaksi.create', compact('users'));
+        return view('backend.transaksi.create');
     }
 
     /**
@@ -38,7 +35,6 @@ class TransaksikasController extends Controller
     {
 
         $request->validate([
-            'user_id'    => 'required',
             'jenis'      => 'required|in:pemasukkan,pengeluaran',
             'jumlah'     => 'required|numeric',
             'keterangan' => 'nullable',
@@ -46,7 +42,6 @@ class TransaksikasController extends Controller
         ]);
 
         $transaksi             = new Transaksikas();
-        $transaksi->user_id    = $request->user_id;
         $transaksi->jenis      = $request->jenis;
         $transaksi->jumlah     = $request->jumlah;
         $transaksi->keterangan = $request->keterangan;
@@ -63,9 +58,8 @@ class TransaksikasController extends Controller
     public function show(string $id)
     {
         $transaksi = Transaksikas::findOrFail($id);
-        $users     = User::all();
 
-        return view('backend.transaksi.show', compact('transaksi', 'users'));
+        return view('backend.transaksi.show', compact('transaksi'));
 
     }
 
@@ -75,9 +69,8 @@ class TransaksikasController extends Controller
     public function edit(string $id)
     {
         $transaksi = Transaksikas::findOrFail($id);
-        $users     = User::all();
 
-        return view('backend.transaksi.edit', compact('transaksi', 'users'));
+        return view('backend.transaksi.edit', compact('transaksi'));
     }
 
     /**
@@ -86,7 +79,6 @@ class TransaksikasController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'user_id'    => 'required',
             'jenis'      => 'required|in:pemasukkan,pengeluaran',
             'jumlah'     => 'required|numeric',
             'keterangan' => 'nullable',
@@ -94,7 +86,6 @@ class TransaksikasController extends Controller
         ]);
 
         $transaksi             = Transaksikas::findOrFail($id);
-        $transaksi->user_id    = $request->user_id;
         $transaksi->jenis      = $request->jenis;
         $transaksi->jumlah     = $request->jumlah;
         $transaksi->keterangan = $request->keterangan;

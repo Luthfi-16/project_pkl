@@ -12,22 +12,6 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group mb-4">
-                        <label for="exampleFormControlSelect1">Pilih Nama Siswa</label>
-                        <select class="form-select @error('user_id') is-invalid @enderror" name="user_id" id="exampleFormControlSelect1">
-                          <option>Pilih</option>
-                          @foreach($users as $data)
-                          <option value="{{$data->id}}">{{$data->name}}</option>
-                          @endforeach
-                        </select>
-                        @error('user_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group mb-4">
                         <label for="">Pilih Jenis Transaksi</label>
                         <select name="jenis" class="form-select @error('jenis') is-invalid @enderror" id="">
                             <option value="">Pilih</option>

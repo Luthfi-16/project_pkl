@@ -3,23 +3,23 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Tambah transaksi kas</h4>
+          <h4 class="card-title">Tambah pembayaran kas</h4>
           <p class="card-subtitle mb-3">
-            Untuk menambah data transaksi kas
+            Untuk menambah data pembayaran kas
           </p>
-          <form action="{{route('backend.transaksi.update', $transaksi->id)}}" method="post">
+          <form action="{{route('backend.pembayaran.store')}}" method="post">
             @csrf
-            @method('put')
             <div class="row">
                 <div class="col">
                     <div class="form-group mb-4">
-                        <label for="">Pilih Jenis Transaksi</label>
-                        <select name="jenis" class="form-select @error('jenis') is-invalid @enderror" id="">
+                        <label for="">Pilih Nama Siswa</label>
+                        <select name="user_id" class="form-select @error('jenis') is-invalid @enderror" id="">
                             <option value="">Pilih</option>
-                            <option value="pemasukkan"{{ $transaksi->jenis == 'pemasukkan' ? 'selected' : ''}}>Pemasukkan</option>
-                            <option value="pengeluaran"{{ $transaksi->jenis == 'pengeluaran' ? 'selected' : ''}}>Pengeluaran</option>
+                            @foreach($users as $data)
+                            <option value="{{ $data->id }}">{{$data->name}}</option>
+                            @endforeach
                         </select>
-                        @error('jenis')
+                        @error('user_id')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -31,7 +31,7 @@
                 <div class="col">
                     <div class="form-group mb-4">
                         <label for="">Jumlah Uang</label>
-                        <input type="number" name="jumlah" value="{{$transaksi->jumlah}}" class="form-control @error('jumlah') is-invalid @enderror" placeholder="Masukkan jumlah uang">
+                        <input type="number" name="jumlah" class="form-control @error('jumlah') is-invalid @enderror" placeholder="Masukkan jumlah uang">
                         @error('jumlah')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
                 <div class="col">
                     <div class="form-group mb-4">
                         <label for="">Tanggal</label>
-                        <input type="date" name="tanggal" value="{{$transaksi->tanggal}}" class="form-control @error('tanggal') is-invalid @enderror" >
+                        <input type="date" name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" >
                         @error('tanggal')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -52,17 +52,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
-                    <div class="form-group mb-4">
-                        <label for="">Keterangan</label>
-                        <textarea name="keterangan" id="" cols="5" rows="10" class="form-control @error('keterangan') is-invalid @enderror">{{ $transaksi->keterangan }}</textarea>
-                        @error('keterangan')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
             </div>
             <div class="d-md-flex align-items-center">
                 <div class="mt-3 mt-md-0 ms-auto">

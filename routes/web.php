@@ -5,6 +5,9 @@ use App\Http\Controllers\BackendController;
 use App\Http\Middleware\Admin;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\TransaksikasController;
+use App\Http\Controllers\Backend\PembayaranController;
+use App\Http\Controllers\Backend\KasmingguanController;
+
 
 
 Route::get('/', function () {
@@ -21,4 +24,7 @@ Route::group(['prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', 
     Route::get('/', [BackendController::class, 'index']);
     Route::resource('/siswa', UserController::class);
     Route::resource('/transaksi', TransaksikasController::class);
+    Route::resource('/pembayaran', PembayaranController::class);
+    Route::resource('/kas', KasmingguanController::class);
+
 });

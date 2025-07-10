@@ -12,7 +12,6 @@
         </div>
       </div>
       <p class="card-subtitle mb-3">
-        Untuk nambah akun
       </p>
       <div class="table-responsive border rounded-4">
         <table class="table mb-0">

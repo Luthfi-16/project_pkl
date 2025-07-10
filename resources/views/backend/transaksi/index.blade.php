@@ -12,7 +12,6 @@
         </div>
       </div>
       <p class="card-subtitle mb-3">
-        Untuk nambah transaksi kas
       </p>
       <div class="table-responsive border rounded-4">
         <table class="table mb-0">
@@ -20,12 +19,11 @@
             <!-- start row -->
             <tr>
               <th class="text-white">#</th>
-              <th class="text-white">Nama</th>
               <th class="text-white">Jenis</th>
               <th class="text-white">Jumlah</th>
               <th class="text-white">Keterangan</th>
               <th class="text-white">Tanggal</th>
-              <th class="tetx-white">Aksi</th>
+              <th class="text-white">Aksi</th>
             </tr>
             <!-- end row -->
           </thead>
@@ -36,11 +34,10 @@
             @foreach($transaksi as $data)
             <tr>
               <td>{{ $no++ }}</td>
-              <td>{{ $data->user->name}}</td>
               <td>{{ $data->jenis}}</td>
-              <td>{{ $data->jumlah}}</td>
-              <td>{{ $data->tanggal}}</td>
+              <td>Rp. {{ number_format($data->jumlah, '0','.','.') }}</td>
               <td>{{ $data->keterangan }}</td>
+              <td>{{ $data->tanggal->format('d M Y') }}</td>
               <td>
                 <a href="{{ route('backend.transaksi.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a>
                 <a href="{{ route('backend.transaksi.show', $data->id) }}" class="btn btn-info btn-sm">Show</a>
