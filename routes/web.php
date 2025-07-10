@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\TransaksikasController;
 use App\Http\Controllers\Backend\PembayaranController;
 use App\Http\Controllers\Backend\KasmingguanController;
+use App\Http\Controllers\FrontendController;
 
 
 
@@ -18,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/', [FrontendController::class, 'index']);
 
 // Route untuk admin / backend
 Route::group(['prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', Admin::class]], function () {
@@ -26,4 +28,8 @@ Route::group(['prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', 
     Route::resource('/transaksi', TransaksikasController::class);
     Route::resource('/pembayaran', PembayaranController::class);
     Route::resource('/kas', KasmingguanController::class);
+});
+
+Route::get('/select', function () {
+    return view('select');
 });

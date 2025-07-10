@@ -118,24 +118,24 @@ class PembayaranController extends Controller
             'jumlah'  => 'required|numeric',
             'tanggal' => 'required|date',
         ]);
-    
+
         // Ambil pembayaran lama (sebelum diedit)
         $pembayaranLama = Pembayaran::findOrFail($id);
-    
+
         $userIdLama = $pembayaranLama->user_id;
         $tanggalLama = Carbon::parse($pembayaranLama->tanggal);
         $mingguKeLama = ceil($tanggalLama->day / 7);
         $bulanLama = $tanggalLama->month;
-    
+
         // Hapus dampak pembayaran lama di kas mingguan
         $kasLama = KasMingguan::where('user_id', $userIdLama)
             ->where('minggu_ke', $mingguKeLama)
             ->where('bulan', $bulanLama)
             ->first();
-    
+
         if ($kasLama) {
             $kasLama->jumlah -= $pembayaranLama->jumlah;
-    
+
             if ($kasLama->jumlah <= 0) {
                 $kasLama->delete(); // Jika tidak ada pembayaran lain, hapus kas
             } else {
@@ -143,24 +143,24 @@ class PembayaranController extends Controller
                 $kasLama->save();
             }
         }
-    
+
         // Update pembayaran
         $pembayaranLama->user_id = $request->user_id;
         $pembayaranLama->jumlah  = $request->jumlah;
         $pembayaranLama->tanggal = $request->tanggal;
         $pembayaranLama->save();
-    
+
         // Hitung minggu & bulan baru
         $tanggalBaru = Carbon::parse($request->tanggal);
         $mingguKeBaru = ceil($tanggalBaru->day / 7);
         $bulanBaru = $tanggalBaru->month;
-    
+
         // Update / Tambah data ke kas mingguan
         $kasBaru = KasMingguan::where('user_id', $request->user_id)
             ->where('minggu_ke', $mingguKeBaru)
             ->where('bulan', $bulanBaru)
             ->first();
-    
+
         if ($kasBaru) {
             $kasBaru->jumlah += $request->jumlah;
             $kasBaru->status = $kasBaru->jumlah >= 10000 ? 'lunas' : 'belum';
@@ -176,11 +176,11 @@ class PembayaranController extends Controller
                 'status'        => $request->jumlah >= 10000 ? 'lunas' : 'belum',
             ]);
         }
-    
+
         toast('Data berhasil diedit', 'success');
         return redirect()->route('backend.pembayaran.index');
     }
-    
+
 
     /**
      * Remove the specified resource from storage.

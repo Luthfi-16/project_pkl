@@ -1,4 +1,7 @@
 @extends('layouts.backend')
+@section('styles')
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.bootstrap5.css">
+@endsection
 @section('content')
 <div class="container-fluid">
     <div class="card">
@@ -11,7 +14,7 @@
           <p class="card-subtitle mb-3">
           </p>
           <div class="table-responsive border rounded-4">
-            <table class="table mb-0">
+            <table class="table mb-0" id="dataKas">
               <thead class="table-dark">
                 <!-- start row -->
                 <tr>
@@ -21,7 +24,7 @@
                   <th class="text-white">Minggu Ke</th>
                   <th class="text-white">Bulan</th>
                   <th class="text-white">Jumlah</th>
-                  <th class="text-white">Tanggal</th>
+                  <th class="text-white">Tanggal Lunas</th>
                   <th class="text-white">Aksi</th>
                 </tr>
                 <!-- end row -->
@@ -58,3 +61,10 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
+    <script>
+        new DataTable('#dataKas');
+</script>
+@endpush

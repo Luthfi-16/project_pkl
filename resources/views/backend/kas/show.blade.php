@@ -18,7 +18,7 @@
 
                             <div class="mb-3">
                                 <label><strong>Bulan : </strong></label>
-                                <div>{{\Carbon\Carbon::create()->month($kas->bulan)->translatedFormat('F')}}</div>
+                                <div>{{\Carbon\Carbon::create()->month($kas->bulan)->translatedFormat('F')}} (Minggu ke : {{$kas->minggu_ke}})</div>
                             </div>
                         </div>
 

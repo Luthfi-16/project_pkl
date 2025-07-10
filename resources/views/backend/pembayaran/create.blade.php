@@ -1,4 +1,8 @@
 @extends('layouts.backend')
+@section('styles')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />   
+@endsection
 @section('content')
 <div class="container-fluid">
     <div class="card">
@@ -13,7 +17,7 @@
                 <div class="col">
                     <div class="form-group mb-4">
                         <label for="">Pilih Nama Siswa</label>
-                        <select name="user_id" class="form-select @error('jenis') is-invalid @enderror" id="">
+                        <select id="nama" name="user_id" class="form-select @error('jenis') is-invalid @enderror" >
                             <option value="">Pilih</option>
                             @foreach($users as $data)
                             <option value="{{ $data->id }}">{{$data->name}}</option>
@@ -65,3 +69,12 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript">	
+	$(document).ready(function() {
+		$('#nama').select2();
+	});
+</script>
+@endpush
