@@ -36,7 +36,10 @@
               <td>{{ $data->email}}</td>
               <td>
                 <a href="{{ route('backend.siswa.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                @if($data->isAdmin == 1)
+                @elseif($data->isAdmin != 1)
                 <a href="{{ route('backend.siswa.destroy', $data->id) }}" class="btn btn-sm btn-danger" data-confirm-delete="true">Hapus</a>
+                @endif
               </td>
             </tr>
             @endforeach

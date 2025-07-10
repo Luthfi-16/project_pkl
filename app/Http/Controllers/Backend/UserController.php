@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('isAdmin', '!=', 1)->get();
+        $users = User::all();
         $title = 'Hapus Data Akun!';
         $text  = "Apakah Anda Yakin??";
         confirmDelete($title, $text);
