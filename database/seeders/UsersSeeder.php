@@ -21,12 +21,5 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('rahasia'),
             'isAdmin'  => 1,
         ]);
-
-        \App\Models\User::create([
-            'name'     => 'Member',
-            'email'    => 'member@gmail.com',
-            'password' => bcrypt('rahasia'),
-            'isAdmin'  => 0,
-        ]);
     }
 }

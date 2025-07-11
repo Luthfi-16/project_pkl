@@ -1,4 +1,7 @@
 @extends('layouts.backend')
+@section('styles')
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.bootstrap5.css">
+@endsection
 @section('content')
 <div class="container-fluid">
     <div class="card">
@@ -14,7 +17,7 @@
           <p class="card-subtitle mb-3">
           </p>
           <div class="table-responsive border rounded-4">
-            <table class="table mb-0">
+            <table id="dataBayar" class="table mb-0">
               <thead class="table-dark">
                 <!-- start row -->
                 <tr>
@@ -49,3 +52,10 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
+    <script>
+        new DataTable('#dataBayar');
+    </script>
+@endpush

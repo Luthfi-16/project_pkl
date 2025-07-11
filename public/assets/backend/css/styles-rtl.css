@@ -2313,6 +2313,10 @@ progress {
   border-color: var(--bs-table-border-color);
 }
 
+.kdm {
+  color: var(--accent-color);
+}
+
 .table-secondary {
   --bs-table-color: #000;
   --bs-table-bg: #dbf2ff;

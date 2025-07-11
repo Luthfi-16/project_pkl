@@ -4,8 +4,7 @@
     <!-- ---------------------------------- -->
     <div class="brand-logo d-flex align-items-center justify-content-between">
       <a href="{{ url('admin')}}" class="text-nowrap logo-img">
-        <img src="{{ asset('assets/backend/images/logos/dark-logo.svg')}}" class="dark-logo" alt="Logo-Dark" />
-        <img src="{{ asset('assets/backend/images/logos/light-logo.svg')}}" class="light-logo" alt="Logo-light" />
+        <h2><b>KD<span style="color: rgb(113, 203, 15)">M</span></b></h2>
       </a>
       <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
         <i class="ti ti-x"></i>
@@ -66,6 +65,14 @@
               <i class="ti ti-cards"></i>
             </span>
             <span class="hide-menu">Table Kas Mingguan</span>
+          </a>
+        </li>
+                <li class="sidebar-item">
+          <a class="sidebar-link" href="{{ url('admin/export') }}" aria-expanded="false">
+            <span>
+              <i class="ti ti-file-description"></i>
+            </span>
+            <span class="hide-menu">Laporan</span>
           </a>
         </li>
       </ul>
