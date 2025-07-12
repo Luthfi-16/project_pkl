@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
+<div class="container-fluid">
     <!-- Hero Section -->
     <section id="hero" class="hero section light-background">
         <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
@@ -35,47 +36,42 @@
       <!-- About Section -->
       <section id="about" class="about section">
   
-        <div class="container">
-  
-          <div class="row gy-4">
-  
-            <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
-              <p class="who-we-are">Who We Are</p>
-              <h3>Unleashing Potential with Creative Strategy</h3>
-              <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                <li><i class="bi bi-check-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-              </ul>
-              <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-  
-            <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
-                <div class="col-lg-6">
-                  <img src="{{ ('assets/frontend/img/about-company-1.jpg')}}" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-6">
-                  <div class="row gy-4">
-                    <div class="col-lg-12">
-                      <img src="{{ ('assets/frontend/img/about-company-2.jpg')}}" class="img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-12">
-                      <img src="{{ ('assets/frontend/img/about-company-3.jpg')}}" class="img-fluid" alt="">
-                    </div>
-                  </div>
-                </div>
+            <div class="d-flex mb-1 align-items-center">
+              <div>
+                <h4 class="card-title mb-0">Kelola Uang Kas</h4>
               </div>
-  
             </div>
-  
-          </div>
-  
-        </div>
+            <p class="card-subtitle mb-3">
+            </p>
+            <div class="table-responsive border rounded-4">
+              <table class="table mb-0 table-sm text-nowrap" id="dataTransaksi">
+                <thead class="table-dark">
+                  <!-- start row -->
+                  <tr>
+                    <th class="text-white">#</th>
+                    <th class="text-white">Jenis</th>
+                    <th class="text-white">Jumlah</th>
+                    <th class="text-white">Keterangan</th>
+                    <th class="text-white">Tanggal</th>
+                  </tr>
+                  <!-- end row -->
+                </thead>
+                <tbody>
+                  @php
+                      $no = 1;
+                  @endphp
+                  @foreach($transaksi as $data)
+                  <tr>
+                    <td>{{ $no++ }}</td>
+                    <td>{{ $data->jenis}}</td>
+                    <td>Rp. {{ number_format($data->jumlah, '0','.','.') }}</td>
+                    <td>{{ $data->keterangan }}</td>
+                    <td>{{ $data->tanggal->format('d M Y') }}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
       </section><!-- /About Section -->
-
+</div>
 @endsection

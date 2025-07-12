@@ -13,11 +13,14 @@ class FrontendController extends Controller
         $totalPembayaran = Pembayaran::sum('jumlah');
         $saldoKas        = $totalPembayaran + $totalPemasukkan - $totalPengeluaran;
 
+        $transaksi = Transaksikas::where('jenis', 'pengeluaran')->get();
+
         return view('index', compact(
             'totalPemasukkan',
             'totalPengeluaran',
             'totalPembayaran',
-            'saldoKas'
+            'saldoKas',
+            'transaksi'
         ));
 
     }
