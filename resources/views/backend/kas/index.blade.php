@@ -8,7 +8,7 @@
         <div class="card-body">
           <div class="d-flex mb-1 align-items-center">
             <div>
-              <h4 class="card-title mb-0">Data Kas</h4>
+              <h4 class="card-title mb-0">Catatan kas</h4>
             </div>
           </div>
           <p class="card-subtitle mb-3">

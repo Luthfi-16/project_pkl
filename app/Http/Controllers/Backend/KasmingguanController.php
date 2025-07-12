@@ -10,7 +10,7 @@ class KasmingguanController extends Controller
 {
     public function index()
     {
-        $kas   = KasMingguan::all();
+        $kas   = KasMingguan::latest()->get();
         $users = User::all();
         $title = 'Hapus Data Kas!';
         $text  = "Apakah Anda Yakin??";

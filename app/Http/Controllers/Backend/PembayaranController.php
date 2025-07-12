@@ -15,7 +15,7 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        $pembayaran = Pembayaran::all();
+        $pembayaran = Pembayaran::latest()->get();
         $users      = User::all();
         $title      = 'Hapus Data Bayar!';
         $text       = "Apakah Anda Yakin??";

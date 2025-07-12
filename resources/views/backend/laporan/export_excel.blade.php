@@ -20,6 +20,10 @@
                 <td>{{ $data->tanggal->format('d M Y') }}</td>
             </tr>
             @endforeach
+            <tr>
+                <th>Saldo Kas : </th>
+                <td colspan="6" style="text-align: center">Rp. {{ number_format($saldoKas, '0', '.', '.') }}</td>
+            </tr>
         </tbody>
     </table>
 @elseif($jenis == 'kas')
@@ -48,6 +52,14 @@
                 <td>{{ $data->tanggal_bayar->format('d M Y') }}</td>
             </tr>
             @endforeach
+            <tr>
+                <th>Saldo Kas : </th>
+                <td colspan="6" style="text-align: center">Rp. {{ number_format($saldoKas, '0', '.', '.') }}</td>
+            </tr>
+            <tr>
+                <th>Saldo Tunggakan :</th>
+                <td colspan="6" style="text-align: center">Rp. {{ number_format($saldoNunggak, '0', '.', '.') }}</td>
+            </tr>
         </tbody>
     </table>
 @endif

@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0"> History Mingguan </h5>
+                    <h5 class="mb-0"> Riwayat Kas {{ $kas->users->name }} </h5>
                 </div>
 
                 <div class="card-body">

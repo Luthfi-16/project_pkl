@@ -3,9 +3,9 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Tambah transaksi kas</h4>
+          <h4 class="card-title">Edit data</h4>
           <p class="card-subtitle mb-3">
-            Untuk menambah data transaksi kas
+            Untuk edit data Kelola(pemasukkan/pengeluaran)
           </p>
           <form action="{{route('backend.transaksi.update', $transaksi->id)}}" method="post">
             @csrf

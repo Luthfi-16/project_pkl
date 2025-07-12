@@ -3,9 +3,9 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Tambah pembayaran kas</h4>
+          <h4 class="card-title">Edit pembayaran</h4>
           <p class="card-subtitle mb-3">
-            Untuk menambah data pembayaran kas
+            Untuk mengedit data pembayaran kas
           </p>
           <form action="{{route('backend.pembayaran.update', $pembayaran->id)}}" method="post">
             @csrf
