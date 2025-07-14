@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Favicon icon-->
-  <link rel="shortcut icon" type="image/png" href="{{asset ('/assets/backend/images/logos/favicon.png') }}" />
+   <link href="{{ ('assets/frontend/img/kdm.png')}}" rel="icon">
 
   <!-- Core Css -->
   <link rel="stylesheet" href="{{asset ('/assets/backend/css/styles.css')}}" />
 
-  <title>Modernize Bootstrap Admin</title>
+  <title>Login</title>
 </head>
 
-<body>
+<body style="background-color: #f0fced">
   <!-- Preloader -->
   <div class="preloader">
     <img src="{{asset ('/assets/backend/images/logos/favicon.png') }}" alt="loader" class="lds-ripple img-fluid" />
@@ -28,9 +28,8 @@
           <div class="col-md-8 col-lg-6 col-xxl-3 auth-card">
             <div class="card mb-0">
               <div class="card-body">
-                <a href="../main/index.html" class="text-nowrap logo-img text-center d-block mb-5 w-100">
-                  <img src="{{asset ('/assets/backend/images/logos/dark-logo.svg')}}" class="dark-logo" alt="Logo-Dark" />
-                  <img src="{{asset ('/assets/backend/images/logos/light-logo.svg')}}" class="light-logo" alt="Logo-light" />
+                <a href="#" class="text-nowrap logo-img text-center d-block mb-5 w-100">
+                  <h2 style="color: black"><b>KD<span style="color: #71c55d">M</span></b></h2>
                 </a>
 
                 <form method="POST" action="{{ route('login') }}">
@@ -53,7 +52,7 @@
                         </span>
                     @enderror
                   </div>
-                  <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Login</button>
+                  <button type="submit" class="btn w-100 py-8 mb-4 rounded-2" style="background-color: #71c55d; color: black">Login</button>
                   <div class="d-flex align-items-center justify-content-center">
                   </div>
                 </form>

@@ -12,15 +12,16 @@ use App\Http\Controllers\FrontendController;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->middleware('auth');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [FrontendController::class, 'index'])->middleware('auth');
+Route::get('/profile/{id}', [FrontendController::class, 'profile'])->name('profile');
 
 // Route untuk admin / backend
 Route::group(['prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', Admin::class]], function () {

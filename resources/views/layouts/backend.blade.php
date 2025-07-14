@@ -8,12 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Favicon icon-->
-  <link rel="shortcut icon" type="image/png" href="{{ asset('/assets/backend/images/logos/favicon.png')}}"/>
+  <link href="{{ asset ('assets/frontend/img/kdmAdmin.png')}}" rel="icon">
 
   <!-- Core Css -->
   <link rel="stylesheet" href="{{ asset('/assets/backend/css/styles.css')}}" />
 
-  <title>Modernize Bootstrap Admin</title>
+  <title>Kelola Dana Mandiri</title>
   <!-- Owl Carousel  -->
   <link rel="stylesheet" href="{{ asset('/assets/backend/libs/owl.carousel/dist/assets/owl.carousel.min.css')}}" />
   @yield('styles')
@@ -22,7 +22,7 @@
 <body>
   <!-- Preloader -->
   <div class="preloader">
-    <img src="{{ asset('/assets/backend/images/logos/favicon.png')}}" alt="loader" class="lds-ripple img-fluid')}}" />
+    <img src="{{ asset ('assets/frontend/img/kdmAdmin.png')}}" alt="loader" class="lds-ripple img-fluid')}}" />
   </div>
   <div id="main-wrapper">
     <!-- Sidebar Start -->
