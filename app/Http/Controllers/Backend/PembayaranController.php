@@ -48,17 +48,28 @@ class PembayaranController extends Controller
         $pembayaran->user_id = $request->user_id;
         $pembayaran->jumlah  = $request->jumlah;
         $pembayaran->tanggal = $request->tanggal;
-        $pembayaran->save();
+
 
         $tanggal  = Carbon::parse($request->tanggal);
         $mingguKe = ceil($tanggal->day / 7);
         $bulan    = $tanggal->month;
 
+        $users = User::find($request->user_id);
+
         // Cek apakah kas mingguan untuk user, minggu, bulan sudah ada
         $kasMingguan = KasMingguan::where('user_id', $request->user_id)
             ->where('minggu_ke', $mingguKe)
+            ->where('status', 'lunas','belum')
             ->where('bulan', $bulan)
             ->first();
+
+        if ($kasMingguan && $kasMingguan->status == 'lunas') {
+            
+            toast("Uangkas minggu ini untuk {$users->name} sudah lunas", 'info');
+            return redirect()->route('backend.pembayaran.create');
+
+        }
+        
 
         if ($kasMingguan) {
             // Update jumlah
@@ -84,6 +95,8 @@ class PembayaranController extends Controller
                 'tanggal_bayar' => $tanggal,
             ]);
         }
+
+        $pembayaran->save();
 
         toast('Data berhasil ditambah', 'success');
         return redirect()->route('backend.pembayaran.index');

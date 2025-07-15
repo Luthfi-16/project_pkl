@@ -19,7 +19,7 @@
 <body style="background-color: #f0fced">
   <!-- Preloader -->
   <div class="preloader">
-    <img src="{{asset ('/assets/backend/images/logos/favicon.png') }}" alt="loader" class="lds-ripple img-fluid" />
+    <img src="{{asset ('/assets/frontend/img/kdm.png') }}" alt="loader" class="lds-ripple img-fluid" />
   </div>
   <div id="main-wrapper" class="auth-customizer-none">
     <div class="position-relative overflow-hidden radial-gradient min-vh-100 w-100 d-flex align-items-center justify-content-center">
@@ -29,7 +29,7 @@
             <div class="card mb-0">
               <div class="card-body">
                 <a href="#" class="text-nowrap logo-img text-center d-block mb-5 w-100">
-                  <h2 style="color: black"><b>KD<span style="color: #71c55d">M</span></b></h2>
+                  <h2 style="color: black">LOGIN</h2>
                 </a>
 
                 <form method="POST" action="{{ route('login') }}">

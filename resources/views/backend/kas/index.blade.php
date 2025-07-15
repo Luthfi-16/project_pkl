@@ -49,7 +49,7 @@
                   <td>Rp. {{ number_format($data->jumlah, '0','.','.') }}</td>
                   <td>{{ $data->tanggal_bayar->format('d M Y') }}</td>
                   <td>
-                    <a href="{{ route('backend.kas.show', $data->id) }}" class="btn btn-info btn-sm">Show</a>
+                    <a href="{{ route('backend.kas.show', $data->id) }}" class="btn btn-info btn-sm">Detail</a>
                     <a href="{{ route('backend.kas.destroy', $data->id) }}" class="btn btn-sm btn-danger" data-confirm-delete="true">Hapus</a>
                   </td>
                 </tr>
@@ -65,6 +65,10 @@
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
     <script>
-        new DataTable('#dataKas');
-</script>
+    new DataTable('#dataKas', {
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/id.json'
+      }
+    });
+  </script>
 @endpush

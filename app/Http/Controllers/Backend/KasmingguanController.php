@@ -53,9 +53,30 @@ class KasmingguanController extends Controller
     public function destroy(string $id)
     {
         $kas = KasMingguan::findOrFail($id);
-        $kas->delete();
-        toast('Data berhasil dihapus', 'success');
-        return redirect()->route('backend.kas.index');
 
+        // Ambil minggu, bulan, user dari kas mingguan
+        $mingguKe = $kas->minggu_ke;
+        $bulan = $kas->bulan;
+        $userId = $kas->user_id;
+
+        // Cari pembayaran yang sesuai minggu dan bulan
+        $pembayarans = Pembayaran::where('user_id', $userId)
+            ->whereMonth('tanggal', $bulan)
+            ->get()
+            ->filter(function ($item) use ($mingguKe) {
+                return ceil(\Carbon\Carbon::parse($item->tanggal)->day / 7) == $mingguKe;
+            });
+
+        // Hapus semua pembayaran yang cocok
+        foreach ($pembayarans as $pembayaran) {
+            $pembayaran->delete();
+        }
+
+        // Hapus kas mingguan
+        $kas->delete();
+
+        toast('Data kas dan pembayaran terkait berhasil dihapus', 'success');
+        return redirect()->route('backend.kas.index');
     }
+
 }
